@@ -1,0 +1,5 @@
+C:\Users\a04mezz.USAC\Documents\Visual Studio 2010\Projects\MvcMovie\MvcMovie\bin\MvcMovie.dll
+C:\Users\a04mezz.USAC\Documents\Visual Studio 2010\Projects\MvcMovie\MvcMovie\bin\MvcMovie.pdb
+C:\Users\a04mezz.USAC\Documents\Visual Studio 2010\Projects\MvcMovie\MvcMovie\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\a04mezz.USAC\Documents\Visual Studio 2010\Projects\MvcMovie\MvcMovie\obj\Debug\MvcMovie.dll
+C:\Users\a04mezz.USAC\Documents\Visual Studio 2010\Projects\MvcMovie\MvcMovie\obj\Debug\MvcMovie.pdb
