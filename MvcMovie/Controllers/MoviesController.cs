@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MvcMovie.Models;
+using System.Drawing;
 
 namespace MvcMovie.Controllers
 { 
@@ -57,9 +58,13 @@ namespace MvcMovie.Controllers
         //
         // GET: /Movies/Edit/5
  
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int id = 0)
         {
             Movie movie = db.Movies.Find(id);
+
+            if (movie == null)
+                return HttpNotFound();
+
             return View(movie);
         }
 
@@ -97,6 +102,29 @@ namespace MvcMovie.Controllers
             db.Movies.Remove(movie);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult SearchIndex(string movieGenre, string searchString)
+        {
+            var GenreList = new List<string>();
+
+            var GenreQry = from d in db.Movies
+                           orderby d.Genre
+                           select d.Genre;
+            GenreList.AddRange(GenreQry.Distinct());
+            ViewBag.movieGenre = new SelectList(GenreList);
+            ViewBag.searchString = searchString;
+
+            var movies = from m in db.Movies
+                         select m;
+
+            if (!String.IsNullOrEmpty(searchString))
+                movies = movies.Where(s => s.Title.Contains(searchString));
+
+            if (string.IsNullOrEmpty(movieGenre))
+                return View(movies);
+            else
+                return View(movies.Where(x => x.Genre == movieGenre));
         }
 
         protected override void Dispose(bool disposing)
